@@ -1,13 +1,17 @@
 import pandas as pa
 import numpy as np
-import dcs
 from FlightData import loadFlightData
+from GroupGen import generateGroup
+from dcs import Mission
+
 filename="../TestData/AirGoons DCS Weekly Package.ods"
 signup="Sign-Ups"
 sheet=pa.read_excel(filename,sheet_name=signup,engine="odf").to_numpy()
 
 flightData = loadFlightData(sheet)
 
-m=dcs.Mission()
-m.remove_plane_group
+
+mission=Mission()
+group=generateGroup(mission,flightData[0])
+
 a=8

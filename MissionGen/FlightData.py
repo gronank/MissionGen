@@ -19,6 +19,11 @@ class FlightMember(object):
         if(len(pilots)==1):
             pilots.append(None)
         self.pilot_name,self.rio_name = pilots
+    def unitName(self):
+        if self.rio_name:
+            return self.pilot_name+"/"+self.rio_name
+        else:
+            return self.pilot_name
 roleOffset=(0,2)
 callsignOffset=(-1,2)
 frequencyOffset=(1,2)
