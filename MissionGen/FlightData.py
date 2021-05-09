@@ -49,12 +49,12 @@ class FlightData(object):
             member=FlightMember(sheet,offset(index,memberIndex))
             if(member.pilot_name):
                 self.members.append(member);
-
+    def isActive(self):
+        return self.role!="(Flight Closed)"
         
-def isActive(flightData):
-    return flightData.role!="(Flight Closed)"# and len(flightData.members)>0
+
 
 def loadFlightData(sheet):
     flightIndices=list(zip(*np.where(sheet=="Tasking")))
     flightData=[FlightData(sheet,index) for index in flightIndices]
-    return list(filter(isActive,flightData))
+    return [fd for fd in flightData if fd.isActive()]

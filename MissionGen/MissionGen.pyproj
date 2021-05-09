@@ -12,6 +12,7 @@
     <Name>MissionGen</Name>
     <RootNamespace>MissionGen</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MissionGen.py" />
+    <Compile Include="ParkingHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
