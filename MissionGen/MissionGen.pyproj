@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b035b5ca-1be7-4efe-a88b-e7dd3fe5d13e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>MissionGen.py</StartupFile>
+    <StartupFile>missiongen.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,20 +23,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="PackageHandler.py">
+    <Compile Include="packagehandler.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupGen.py">
+    <Compile Include="groupgen.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FlightData.py">
+    <Compile Include="flightdata.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MissionGen.py" />
-    <Compile Include="ParkingHandler.py">
+    <Compile Include="missiongen.py" />
+    <Compile Include="parkinghandler.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Index.py">
+    <Compile Include="index.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
