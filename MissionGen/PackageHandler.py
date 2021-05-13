@@ -7,10 +7,12 @@ def frequency(f):
         return float(f.replace(',','.'))
     else:
         return f
-class ComsManager:
+class PackageHandler:
     def __init__(self,sheet):
         index=findIndices(sheet,'PACKAGE')[0]
         self.package_name=index[name_offset]
         self.creator_name=index[creator_offset]
         self.package_freq=frequency(index[package_freq_offset])
+    def setupRadio(self,unit, flightFrequency):
+        pass
 

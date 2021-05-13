@@ -4,6 +4,7 @@ from dcs.planes import plane_map
 from  dcs  import unitgroup
 from ParkingHandler import ParkingHandler
 from typing import List, Dict, Union, Optional, Type
+from PackageHandler import PackageHandler
 def getTemplateGroup(mission:Mission, flight:FlightData):
     template_group =  mission.find_group(flight.callsign)
     if not template_group:
@@ -38,7 +39,7 @@ def createGroup(mission:Mission, flight:FlightData)->Union[unitgroup.PlaneGroup,
     else:
         raise Exception("A group must consist of all the same types: planes or helicopters")
 
-def generateGroup(mission:Mission, flight:FlightData):
+def generateGroup(mission:Mission, flight:FlightData, package:PackageHandler):
     template=getTemplateGroup(mission,flight)
     
     if len(flight.members)==0:
@@ -55,6 +56,7 @@ def generateGroup(mission:Mission, flight:FlightData):
             p = mission.aircraft(member.unitName(), aircraft_type, country)
             parkingHandler.assign_parking(p)
             p.set_client()
+            package.setupRadio(p, flight.frequency)
             group.add_unit(p)
 
     mission.flight_group_from_airport
