@@ -1,5 +1,5 @@
 from Index import Index, findIndices
-from dcs.unit import Unit
+from dcs.flyingunit import FlyingUnit
 from dcs import Mission
 from dcs.coalition import Coalition
 
@@ -8,13 +8,14 @@ creator_offset = (2,2)
 atc_freq_offset = (4,2)
 package_freq_offset = (8,2)
 
+main_radio = 2
+group_radio = 1
 
-atc_channel = (1, 1)
-package_channel = (1, 2)
+atc_channel = (main_radio, 1)
+package_channel = (main_radio, 2)
 def refuel_channel(i):
-    return  (1, 3 + i)
-
-group_channel = (2, 1)
+    return  (main_radio, 3 + i)
+group_channel = (group_radio , 1)
 
 def frequency(f):
     if isinstance(f,str) and f != 'x':
@@ -42,7 +43,7 @@ class PackageHandler:
             refueler.name=refueler.name.replace('MHz,',f'MHz (Ch {channel}),')
         self.refuel_freqs=[r.frequency for r in refuelers]
 
-    def setupRadio(self,unit:Unit, flightFrequency:float):
+    def setupRadio(self,unit:FlyingUnit, flightFrequency:float):
         unit.set_radio_channel_preset(*atc_channel, self.atc_freq_offset)
         unit.set_radio_channel_preset(*package_channel, self.package_freq)
         unit.set_radio_channel_preset(*group_channel, flightFrequency)

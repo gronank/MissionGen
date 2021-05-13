@@ -12,6 +12,7 @@ def find_ship_by_id(country,ship_id):
 class ParkingHandler(object):
     """description of class"""
     airport:Airport=None
+    carrier=None
     start_lot:int
     def __init__(self, mission:Mission, template:FlyingGroup, country:Country):
         mission.flight_group_from_unit
@@ -20,6 +21,8 @@ class ParkingHandler(object):
             self.airport=mission.terrain.airport_by_id(airport_id)
             self.start_lot=template.units[0].parking
         else:
+            #unit=template.units[0]
+            #self.carrier=
             self.start_lot=1
 
     def assign_parking(self,unit):

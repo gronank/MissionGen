@@ -16,7 +16,7 @@ def getTemplateGroup(mission:Mission, flight:FlightData):
 def assignFromTemplate(group:unitgroup.PlaneGroup,template:unitgroup.PlaneGroup)->unitgroup.PlaneGroup:
     for waypoint in template.points:
         waypoint.task=[]
-        group.points.append(waypoint)
+        group.add_point(waypoint)
 
 replacements = {'F-14A':'F-14A-135-GR',
                 'F-18C':'FA-18C_hornet',
