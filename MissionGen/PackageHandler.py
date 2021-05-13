@@ -11,7 +11,9 @@ package_freq_offset = (8,2)
 
 atc_channel = (1, 1)
 package_channel = (1, 2)
-refuel_channel = (1, 3)
+def refuel_channel(i):
+    return  (1, 3 + i)
+
 group_channel = (2, 1)
 
 def frequency(f):
@@ -34,11 +36,15 @@ class PackageHandler:
         self.atc_freq_offset=frequency(index[atc_freq_offset])
         self.package_freq=frequency(index[package_freq_offset])
 
-        refuelers=list(findAllAirGroups(mission.coalition[side], lambda group: group.task=='Refueling'))
-        pass
+        refuelers=sorted(findAllAirGroups(mission.coalition[side], lambda group: group.task=='Refueling'), key=lambda group: group.name)
+        for i, refueler in enumerate(refuelers):
+            channel=refuel_channel(i)[1]
+            refueler.name=refueler.name.replace('MHz,',f'MHz (Ch {channel}),')
+        self.refuel_freqs=[r.frequency for r in refuelers]
+
     def setupRadio(self,unit:Unit, flightFrequency:float):
         unit.set_radio_channel_preset(*atc_channel, self.atc_freq_offset)
         unit.set_radio_channel_preset(*package_channel, self.package_freq)
         unit.set_radio_channel_preset(*group_channel, flightFrequency)
-        pass
-
+        for i, refuelFreq in enumerate(self.refuel_freqs):
+            unit.set_radio_channel_preset(*refuel_channel(i), refuelFreq)

@@ -1,5 +1,5 @@
 from dcs import Mission
-from flightfata import FlightData, FlightMember
+from flightdata import FlightData, FlightMember
 from dcs.planes import plane_map
 from  dcs  import unitgroup
 from parkinghandler import ParkingHandler

@@ -10,10 +10,11 @@ signup="Sign-Ups"
 sheet=pa.read_excel(filename,sheet_name=signup,engine="odf").to_numpy()
 
 flightData = loadFlightData(sheet)
-package=PackageHandler(sheet)
+
 
 mission=Mission()
 mission.load_file(templateMission)
+package=PackageHandler(sheet, mission)
 for flight in flightData:
     generateGroup(mission,flight, package)
 mission.save("../TestData/Test.miz")
