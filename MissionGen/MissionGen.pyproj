@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ComsManger.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GroupGen.py">
       <SubType>Code</SubType>
     </Compile>

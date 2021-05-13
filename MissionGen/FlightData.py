@@ -1,6 +1,6 @@
 import numpy as np
 from Index import Index, findIndices
-
+from ComsManger import frequency
 
 
 nameOffset = (0,1)
@@ -38,7 +38,7 @@ class FlightData(object):
     def __init__(self, index:Index):
         self.role=index[roleOffset]
         self.callsign=index[callsignOffset]
-        self.frequency=index[frequencyOffset]
+        self.frequency=frequency(index[frequencyOffset])
         self.mids_ch=index[mids_chOffset]
         if(self.mids_ch=="x"):
             self.mids_ch=None

@@ -3,14 +3,14 @@ import numpy as np
 from FlightData import loadFlightData
 from GroupGen import generateGroup
 from dcs import Mission
-
+from ComsManger import ComsManager
 filename="../TestData/AirGoons DCS Weekly Package.ods"
 templateMission="../TestData/GoonTest1.miz"
 signup="Sign-Ups"
 sheet=pa.read_excel(filename,sheet_name=signup,engine="odf").to_numpy()
 
 flightData = loadFlightData(sheet)
-
+coms=ComsManager(sheet)
 
 mission=Mission()
 mission.load_file(templateMission)
