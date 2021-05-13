@@ -14,6 +14,8 @@ A good way to start is the existing templates for the different maps. Place all 
 
 The script with take the flight name from the signup sheet and create groups with those names and missions. Then, all the placeholder groups are fetched from the mission and their flight plans and positions are assigned to the new groups. 
 
-Radio presets are also automatically assigned: ATC, and package frequencies from the signup sheet is set as channel 1 and 2 respectively on radio 2. The flight frequency from the signup sheet is set as channel 1 on radio 1. 
+Radio presets are also automatically assigned: ATC, and package frequencies from the signup sheet is set as channel 2 and 3 respectively on radio 2. The flight frequency from the signup sheet is set as channel 2 on radio 1. 
 
-Then, all the refuelers are fetched from the mission and their frequencies as set as channel 2 and onwards on radio 1. The name of the refuel flight is also updated to include the channel number.
+Then, all the refuelers are fetched from the mission and their frequencies as set as channel 3 and onwards on radio 1. The name of the refuel flight is also updated to include the channel number.
+
+Channel 1 is skipped because it is used as guard frequency on different airframes

@@ -11,12 +11,12 @@ package_freq_offset = (8,2)
 main_radio = 2
 group_radio = 1
 
-atc_channel = (main_radio, 1)
-package_channel = (main_radio, 2)
+atc_channel = (main_radio, 2)
+package_channel = (main_radio, 3)
 
-group_channel = (group_radio , 1)
+group_channel = (group_radio , 2)
 def refuel_channel(i):
-    return  (group_radio, 2 + i)
+    return  (group_radio, 3 + i)
 
 def frequency(f):
     if isinstance(f,str) and f != 'x':
