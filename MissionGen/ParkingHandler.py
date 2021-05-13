@@ -17,13 +17,11 @@ class ParkingHandler(object):
     def __init__(self, mission:Mission, template:FlyingGroup, country:Country):
         mission.flight_group_from_unit
         airport_id=template.airport_id()
+        self.start_lot=template.units[0].parking
         if airport_id:
             self.airport=mission.terrain.airport_by_id(airport_id)
-            self.start_lot=template.units[0].parking
         else:
-            #unit=template.units[0]
-            #self.carrier=
-            self.start_lot=1
+            self.location=template.units[0].position
 
     def assign_parking(self,unit):
         lot=self.start_lot
@@ -36,6 +34,7 @@ class ParkingHandler(object):
         else:
             unit.parking = lot
             unit.parking_id = str(lot)
+            unit.position=copy.copy(self.location)
         
 
 
