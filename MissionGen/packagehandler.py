@@ -13,9 +13,10 @@ group_radio = 1
 
 atc_channel = (main_radio, 1)
 package_channel = (main_radio, 2)
-def refuel_channel(i):
-    return  (main_radio, 3 + i)
+
 group_channel = (group_radio , 1)
+def refuel_channel(i):
+    return  (group_radio, 2 + i)
 
 def frequency(f):
     if isinstance(f,str) and f != 'x':
