@@ -1,4 +1,4 @@
-from index import Index, findIndices
+from Index import Index, findIndices
 from dcs.unit import Unit
 from dcs import Mission
 from dcs.coalition import Coalition
