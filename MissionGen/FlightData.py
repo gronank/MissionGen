@@ -1,6 +1,6 @@
 import numpy as np
-from Index import Index, findIndices
-from PackageHandler import frequency
+from index import Index, findIndices
+from packagehandler import frequency
 
 
 nameOffset = (0,1)

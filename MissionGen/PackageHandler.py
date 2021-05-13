@@ -1,5 +1,8 @@
-from Index import Index, findIndices
+from index import Index, findIndices
 from dcs.unit import Unit
+from dcs import Mission
+from dcs.coalition import Coalition
+
 name_offset = (0,2)
 creator_offset = (2,2)
 atc_freq_offset = (4,2)
@@ -17,13 +20,22 @@ def frequency(f):
     else:
         return f
 
+def findAllAirGroups(coalition:Coalition, condition):
+    for country in coalition.countries.values():
+        for plane_group in country.plane_group :
+            if condition(plane_group):
+                yield plane_group
+
 class PackageHandler:
-    def __init__(self,sheet):
+    def __init__(self,sheet, mission:Mission,side:str="blue"):
         index=findIndices(sheet,'PACKAGE')[0]
         self.package_name=index[name_offset]
         self.creator_name=index[creator_offset]
         self.atc_freq_offset=frequency(index[atc_freq_offset])
         self.package_freq=frequency(index[package_freq_offset])
+
+        refuelers=list(findAllAirGroups(mission.coalition[side], lambda group: group.task=='Refueling'))
+        pass
     def setupRadio(self,unit:Unit, flightFrequency:float):
         unit.set_radio_channel_preset(*atc_channel, self.atc_freq_offset)
         unit.set_radio_channel_preset(*package_channel, self.package_freq)
