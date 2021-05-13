@@ -47,14 +47,13 @@ def generateGroup(mission:Mission, flight:FlightData):
         raise Exception("Too many units in flight, limit is 4")
     group=createGroup(mission,flight)
     country = mission.country("USA")
-
+    
     group.task=flight.role
     parkingHandler=ParkingHandler(mission,template,country)
     for i, member in enumerate(flight.members):
             aircraft_type = readAircraftType(member)
             p = mission.aircraft(member.unitName(), aircraft_type, country)
             parkingHandler.assign_parking(p)
-            p.position=template.units[0].position
             p.set_client()
             group.add_unit(p)
 

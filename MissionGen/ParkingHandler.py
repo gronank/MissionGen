@@ -2,6 +2,7 @@ from dcs import Mission
 from dcs.unitgroup  import FlyingGroup
 from dcs.country import Country
 from dcs.terrain import Airport
+import copy
 def find_ship_by_id(country,ship_id):
     for ship_group in country.ship_group:
            for ship in ship_group:
@@ -26,7 +27,9 @@ class ParkingHandler(object):
         self.start_lot=self.start_lot+1
 
         if self.airport:
-            unit.set_parking(self.airport.parking_slot(lot))
+            parking_slot=self.airport.parking_slot(lot)
+            unit.set_parking(parking_slot)
+            unit.position=copy.copy(parking_slot.position)
         else:
             unit.parking = lot
             unit.parking_id = str(lot)
