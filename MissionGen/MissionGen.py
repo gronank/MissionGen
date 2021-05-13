@@ -1,9 +1,9 @@
 import pandas as pa
 import numpy as n
-from flightdata import loadFlightData
-from groupgen import generateGroup
+from FlightData import loadFlightData
+from GroupGen import generateGroup
 from dcs import Mission
-from packagehandler import PackageHandler
+from PackageHandler import PackageHandler
 filename="../TestData/AirGoons DCS Weekly Package.ods"
 templateMission="../TestData/GoonTest1.miz"
 signup="Sign-Ups"

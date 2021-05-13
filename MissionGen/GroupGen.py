@@ -1,10 +1,10 @@
 from dcs import Mission
-from flightdata import FlightData, FlightMember
+from FlightData import FlightData, FlightMember
 from dcs.planes import plane_map
 from  dcs  import unitgroup
-from parkinghandler import ParkingHandler
+from ParkingHandler import ParkingHandler
 from typing import List, Dict, Union, Optional, Type
-from packagehandler import PackageHandler
+from PackageHandler import PackageHandler
 
 def getTemplateGroup(mission:Mission, flight:FlightData):
     template_group =  mission.find_group(flight.callsign)

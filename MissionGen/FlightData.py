@@ -1,9 +1,9 @@
 import numpy as np
-from index import Index, findIndices
-from packagehandler import frequency
-
+from Index import Index, findIndices
+from PackageHandler import frequency
 
 nameOffset = (0,1)
+
 class FlightMember(object):
     aircraft_type: str
     pilot_name: str
@@ -28,6 +28,7 @@ callsignOffset=(-1,2)
 frequencyOffset=(1,2)
 mids_chOffset=(1,4)
 memberOffset=(3,2)
+
 class FlightData(object):
     """contains flight data from sign-up spreadsheet"""
     callsign: str
