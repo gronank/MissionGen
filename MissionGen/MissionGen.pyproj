@@ -33,6 +33,9 @@
     <Compile Include="ParkingHandler.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Index.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />

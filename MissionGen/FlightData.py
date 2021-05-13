@@ -1,6 +1,5 @@
 import numpy as np
-def offset(a,b):
-    return tuple(sum(x) for x in zip(a,b))
+from Index import Index, findIndices
 
 
 
@@ -9,9 +8,9 @@ class FlightMember(object):
     aircraft_type: str
     pilot_name: str
     rio_name:str
-    def __init__(self, sheet, index):
-        self.aircraft_type=sheet[index]
-        pilots=sheet[offset(index,nameOffset)]
+    def __init__(self, index):
+        self.aircraft_type=index[(0,0)]
+        pilots=index[nameOffset]
         if not isinstance(pilots,str):
             pilots=(None,None)
         else:
@@ -36,17 +35,17 @@ class FlightData(object):
     frequency: str
     mids_ch: str
     members: list[FlightMember]
-    def __init__(self, sheet, index):
-        self.role=sheet[offset(index, roleOffset)]
-        self.callsign=sheet[offset(index, callsignOffset)]
-        self.frequency=sheet[offset(index, frequencyOffset)]
-        self.mids_ch=sheet[offset(index, mids_chOffset)]
+    def __init__(self, index:Index):
+        self.role=index[roleOffset]
+        self.callsign=index[callsignOffset]
+        self.frequency=index[frequencyOffset]
+        self.mids_ch=index[mids_chOffset]
         if(self.mids_ch=="x"):
             self.mids_ch=None
         self.members=[]
+        memberIndex=index.offset(memberOffset)
         for i in range(4):
-            memberIndex=offset(memberOffset,(i,0))
-            member=FlightMember(sheet,offset(index,memberIndex))
+            member=FlightMember(memberIndex.offset((i,0)))
             if(member.pilot_name):
                 self.members.append(member);
     def isActive(self):
@@ -55,6 +54,6 @@ class FlightData(object):
 
 
 def loadFlightData(sheet):
-    flightIndices=list(zip(*np.where(sheet=="Tasking")))
-    flightData=[FlightData(sheet,index) for index in flightIndices]
+    flightIndices=findIndices(sheet,"Tasking")
+    flightData=[FlightData(index) for index in flightIndices]
     return [fd for fd in flightData if fd.isActive()]
