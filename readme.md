@@ -19,3 +19,9 @@ Radio presets are also automatically assigned: ATC, and package frequencies from
 Then, all the refuelers are fetched from the mission and their frequencies as set as channel 3 and onwards on radio 1. The name of the refuel flight is also updated to include the channel number.
 
 Channel 1 is skipped because it is used as guard frequency on different airframes
+
+### Stuff that the script doesn't do that maybe it should
+
+- [ ] read payloads from somewhere
+- [ ] read waypoints from somewhere
+- [ ] read start location, set up cold/hot start from somewhere
